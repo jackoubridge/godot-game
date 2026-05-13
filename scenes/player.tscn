@@ -1,20 +1,21 @@
-[gd_scene format=3 uid="uid://4ybx1aobfyvf"]
+[gd_scene format=3 uid="uid://cbykf5dqevgho"]
 
-[ext_resource type="Script" uid="uid://cdpo8fmvemabl" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://bm3iltffouvrb" path="res://assets/player-icon.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://ym2c565jdhqw" path="res://scripts/player.gd" id="1_g2els"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+[node name="Node2D" type="Node2D" unique_id=1618710591]
 
-[node name="player" type="Node3D" unique_id=614960279]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=83792797]
+position = Vector2(320, 180)
+script = ExtResource("1_g2els")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=346036422]
-script = ExtResource("1_3vyb7")
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=721173927]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=419662087]
-mesh = SubResource("CapsuleMesh_sh265")
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1748109842]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_3vyb7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1274269014]
-shape = SubResource("CapsuleShape3D_4flbx")
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=1061094695]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=749730385]
+shape = SubResource("CircleShape2D_3vyb7")

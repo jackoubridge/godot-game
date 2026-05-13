@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://hrbwkjju5huu"]
+[gd_scene format=3 uid="uid://c66ofts11sbec"]
 
-[ext_resource type="PackedScene" uid="uid://i28lkepejepg" path="res://scenes/world.tscn" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://4ybx1aobfyvf" path="res://scenes/player.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cbykf5dqevgho" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://bkw845o2063ns" path="res://scenes/background.tscn" id="2_rwgxs"]
 
-[node name="main" type="Node" unique_id=1447119586]
+[node name="Main" type="Node2D" unique_id=1195399613]
 
-[node name="player" parent="." unique_id=614960279 instance=ExtResource("2_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Background" parent="." unique_id=1117696067 instance=ExtResource("2_rwgxs")]
+position = Vector2(0, -2)
 
-[node name="world" parent="." unique_id=1386826904 instance=ExtResource("1_0xm2m")]
+[node name="Player" parent="." unique_id=83792797 instance=ExtResource("1_nnsk1")]

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bkw845o2063ns"]
+
+[ext_resource type="Texture2D" uid="uid://civxx71ajdymq" path="res://assets/background.png" id="1_bkp1e"]
+
+[node name="Background" type="Node2D" unique_id=1117696067]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1337006233]
+repeat_size = Vector2(1000, 1000)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1775953499]
+texture_filter = 1
+texture = ExtResource("1_bkp1e")

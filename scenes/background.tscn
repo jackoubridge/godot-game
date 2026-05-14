@@ -9,5 +9,6 @@ repeat_size = Vector2(1000, 1000)
 repeat_times = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1775953499]
+z_index = -999
 texture_filter = 1
 texture = ExtResource("1_bkp1e")

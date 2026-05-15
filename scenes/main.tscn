@@ -2,10 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://cbykf5dqevgho" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://bkw845o2063ns" path="res://scenes/background.tscn" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://bn6p7yykajdnc" path="res://scenes/skills.tscn" id="3_sugp2"]
 
 [node name="Main" type="Node2D" unique_id=1195399613]
 
+[node name="CanvasLayer" parent="." unique_id=460544607 instance=ExtResource("3_sugp2")]
+
 [node name="Background" parent="." unique_id=1117696067 instance=ExtResource("2_rwgxs")]
-position = Vector2(0, -2)
+position = Vector2(320, 180)
 
 [node name="Player" parent="." unique_id=1618710591 instance=ExtResource("1_nnsk1")]

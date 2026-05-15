@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bm3iltffouvrb" path="res://assets/player-icon.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b4lh526ttkykw" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://cpeqlxu6je2k3" path="res://scenes/camera_zoom.gd" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cdck0dwbflhp6" path="res://assets/player-gun.png" id="3_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
@@ -12,10 +13,16 @@
 position = Vector2(320, 180)
 script = ExtResource("1_g2els")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=749730385]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1714768612]
+shape = SubResource("CircleShape2D_3vyb7")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" unique_id=128332924 groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D" unique_id=749730385]
 shape = SubResource("CircleShape2D_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=721173927]
+script = ExtResource("2_dqkch")
 
 [node name="Body" type="Node2D" parent="CharacterBody2D" unique_id=344125968]
 position = Vector2(-320, -180)
@@ -38,3 +45,5 @@ texture = ExtResource("3_qhqgy")
 
 [node name="BulletStart" type="Node2D" parent="CharacterBody2D" unique_id=1165560921]
 position = Vector2(15.5, 0)
+
+[connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]

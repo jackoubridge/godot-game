@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="godot-game"
+config/version="v0.0.1"
 run/main_scene="uid://c66ofts11sbec"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
@@ -22,6 +23,7 @@ window/size/viewport_height=360
 window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [input]
 
@@ -56,10 +58,11 @@ shoot={
 
 3d/physics_engine="Jolt Physics"
 2d/default_gravity=0.0
+common/physics_interpolation=true
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_2d=2
+anti_aliasing/quality/screen_space_aa=1

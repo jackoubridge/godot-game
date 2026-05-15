@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bn6p7yykajdnc"]
+
+[ext_resource type="FontFile" uid="uid://bci0hpiqadby1" path="res://assets/CascadiaMono-VariableFont_wght.ttf" id="1_pq0ql"]
+
+[sub_resource type="Theme" id="Theme_avfh8"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=460544607]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2117066656]
+offset_right = 107.0
+offset_bottom = 68.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=134946212]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=916630671]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer" unique_id=119851476]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=427588181]
+layout_mode = 2
+theme = SubResource("Theme_avfh8")
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=178805778]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pq0ql")
+theme_override_font_sizes/font_size = 8
+text = "movement speed"
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=898779429]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pq0ql")
+theme_override_font_sizes/font_size = 8
+text = "bullet speed"
+
+[node name="Label3" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1991446561]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pq0ql")
+theme_override_font_sizes/font_size = 8
+text = "reload speed"
+
+[node name="Label4" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2008757398]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pq0ql")
+theme_override_font_sizes/font_size = 8
+text = "bullet damage"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=1421832355]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1842073984]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pq0ql")
+theme_override_font_sizes/font_size = 8
+text = "1"
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=973308555]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pq0ql")
+theme_override_font_sizes/font_size = 8
+text = "1"
+
+[node name="Label3" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=372223993]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pq0ql")
+theme_override_font_sizes/font_size = 8
+text = "1"
+
+[node name="Label4" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=985576440]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pq0ql")
+theme_override_font_sizes/font_size = 8
+text = "1"

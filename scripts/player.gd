@@ -34,13 +34,15 @@ func _physics_process(delta: float) -> void:
 func shoot():
 	var bullet = bullet_path.instantiate()
 	bullet.dir = rotation
-	bullet.pos = $BulletStart.global_position
+	bullet.pos = $Gun/BulletStart.global_position
 	bullet.rot = global_rotation
 	get_parent().add_child(bullet)
 
 	var forward = transform.x
 	var recoil_dir = -forward
 	velocity += recoil_dir * recoil_strength
+	
+	$Gun.recoil()
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	pass

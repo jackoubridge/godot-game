@@ -14,6 +14,7 @@ config/name="godot-game"
 config/version="0.0.1"
 run/main_scene="uid://c66ofts11sbec"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [display]

@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var aim_speed: float = 50
 @export var recoil_strength: float = 75
 
+var can_shoot: bool = true
+
 var bullet_path = preload("res://scenes/bullet.tscn")
 
 func _process(delta: float) -> void:
@@ -26,23 +28,29 @@ func _physics_process(delta: float) -> void:
 	var velocity_y: float = 1.0 - exp( -(acceleration if input.y else friction) * delta)
 	velocity.y = lerp(velocity.y, input.y * speed, velocity_y)
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		shoot()
 
 	move_and_slide()
 	
 func shoot():
-	var bullet = bullet_path.instantiate()
-	bullet.dir = rotation
-	bullet.pos = $Gun/BulletStart.global_position
-	bullet.rot = global_rotation
-	get_parent().add_child(bullet)
+	if can_shoot:
+		can_shoot = false
+		$Timer.start()
+		var bullet = bullet_path.instantiate()
+		bullet.dir = rotation
+		bullet.pos = $Gun/BulletStart.global_position
+		bullet.rot = global_rotation
+		get_parent().add_child(bullet)
 
-	var forward = transform.x
-	var recoil_dir = -forward
-	velocity += recoil_dir * recoil_strength
-	
-	$Gun.recoil()
+		var forward = transform.x
+		var recoil_dir = -forward
+		velocity += recoil_dir * recoil_strength
+		
+		$Gun.recoil()
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	pass
+
+func _on_timer_timeout() -> void:
+	can_shoot = true

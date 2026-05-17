@@ -1,6 +1,6 @@
 extends Node2D
 
-var health_max: float = 2
+var health_max: float = 3
 var health: float = health_max
 var pos: Vector2
 var rot: float

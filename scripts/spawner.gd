@@ -1,6 +1,7 @@
 extends Node2D
 
 var num_squares: int = 0
+@export var num_squares_threshold: int = 5
 
 var square_path = preload("res://scenes/square.tscn")
 var player_pos: Vector2
@@ -14,7 +15,7 @@ func _process(_delta: float) -> void:
 	pass
 	
 func _physics_process(_delta: float) -> void:
-	if num_squares == 0:
+	if num_squares < num_squares_threshold:
 		spawn_square()
 
 func spawn_square():

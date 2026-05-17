@@ -21,8 +21,8 @@ func _physics_process(_delta: float) -> void:
 func spawn_square():
 	var square = square_path.instantiate()
 
-	var random_x = randf_range(100, 200)
-	var random_y = randf_range(100, 200)
+	var random_x = randf_range(75, 300)
+	var random_y = randf_range(75, 300)
 	if randf() < 0.5:
 		random_x *= -1
 	if randf() < 0.5:

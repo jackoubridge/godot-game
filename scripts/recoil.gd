@@ -7,7 +7,7 @@ var recoil_tween: Tween
 
 func _ready():
 	rest_position = position
-	
+
 func recoil():
 	if recoil_tween:
 		recoil_tween.kill()

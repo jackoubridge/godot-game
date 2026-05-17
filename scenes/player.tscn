@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cpeqlxu6je2k3" path="res://scripts/camera_zoom.gd" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cdck0dwbflhp6" path="res://assets/player-gun.png" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://b1uep1n0l4l3i" path="res://scripts/recoil.gd" id="4_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://cujbem3j3vq3x" path="res://scenes/spawner.tscn" id="6_tuyoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
 
@@ -53,6 +54,9 @@ position = Vector2(335.5, 180)
 [node name="Timer" type="Timer" parent="CharacterBody2D" unique_id=388020038]
 wait_time = 0.5
 one_shot = true
+
+[node name="Spawner" parent="." unique_id=773743234 instance=ExtResource("6_tuyoq")]
+position = Vector2(320, 180)
 
 [connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]

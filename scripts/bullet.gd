@@ -19,5 +19,6 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2(speed, 0).rotated(dir)
 	position += velocity * delta
 
-func _on_area_entered(_area: Area2D) -> void:
-	pass
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("square"):
+		queue_free()

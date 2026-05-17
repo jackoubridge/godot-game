@@ -17,6 +17,10 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+global_signals="*uid://bipgjq3dfrnex"
+
 [display]
 
 window/size/viewport_width=640

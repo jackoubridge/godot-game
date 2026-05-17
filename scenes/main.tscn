@@ -9,6 +9,7 @@
 script = ExtResource("1_jyhfs")
 
 [node name="CanvasLayer" parent="." unique_id=460544607 instance=ExtResource("3_sugp2")]
+visible = false
 
 [node name="Background" parent="." unique_id=1117696067 instance=ExtResource("2_rwgxs")]
 position = Vector2(320, 180)

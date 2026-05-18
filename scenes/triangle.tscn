@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ca3phsmklxm61"]
+
+[ext_resource type="Script" uid="uid://du5i7vw3d4kcu" path="res://scripts/triangle.gd" id="1_u1wel"]
+[ext_resource type="Texture2D" uid="uid://1c0s25srldvh" path="res://assets/triangle.png" id="2_l0nj1"]
+[ext_resource type="PackedScene" uid="uid://buvbroanxh6qj" path="res://scenes/health_bar.tscn" id="3_8ul5g"]
+
+[node name="Triangle" type="Node2D" unique_id=1618710591]
+script = ExtResource("1_u1wel")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1700395972 groups=["target", "triangle"]]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D" unique_id=993826622]
+scale = Vector2(1.13, 1.13)
+polygon = PackedVector2Array(-11.1, 7.88, 0, -11.1, 11.1, 7.88)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1975906812]
+texture_filter = 1
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("2_l0nj1")
+
+[node name="Health Bar" parent="." unique_id=810715880 instance=ExtResource("3_8ul5g")]
+position = Vector2(0, 19)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

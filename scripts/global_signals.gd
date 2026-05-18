@@ -1,4 +1,4 @@
 extends Node
 
 @warning_ignore("unused_signal")
-signal square_destroyed
+signal target_destroyed(type)

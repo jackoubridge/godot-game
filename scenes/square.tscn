@@ -9,7 +9,7 @@
 [node name="Square" type="Node2D" unique_id=1618710591]
 script = ExtResource("1_ngi6w")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1700395972 groups=["square"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=1700395972 groups=["square", "target"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=659994081]
 scale = Vector2(1.05, 1.05)

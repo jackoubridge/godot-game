@@ -1,7 +1,6 @@
-
 extends Node2D
 
-var health_max: float = 3
+var health_max: float = 5
 var health: float = health_max
 var pos: Vector2
 var rot: float
@@ -15,7 +14,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if health <= 0:
-		global_signals.target_destroyed.emit("square")
+		global_signals.target_destroyed.emit("triangle")
 		queue_free()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

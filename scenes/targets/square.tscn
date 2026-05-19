@@ -26,5 +26,5 @@ texture = ExtResource("2_l0fk2")
 [node name="Health Bar" parent="." unique_id=810715880 instance=ExtResource("3_n6fuw")]
 position = Vector2(0, 19)
 
-[connection signal="took_damage" from="." to="Health Bar" method="_on_target_took_damage"]
+[connection signal="health_update" from="." to="Health Bar" method="_on_target_health_update"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

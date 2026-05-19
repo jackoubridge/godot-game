@@ -4,7 +4,7 @@ extends Node2D
 func _ready() -> void:
 	$ProgressBar.visible = false	
 
-func _on_target_took_damage() -> void:
+func _on_target_health_update() -> void:
 	if ($ProgressBar.visible == false):
 		$ProgressBar.visible = true
 	$ProgressBar.value = get_parent().health / get_parent().health_max

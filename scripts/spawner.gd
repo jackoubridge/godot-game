@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 		spawn_target(global_enums.target_types.TRIANGLE)
 
 func spawn_target(target_type):
-	var target
+	var target: Target
 
 	if (target_type == global_enums.target_types.SQUARE):
 		target = square_path.instantiate()

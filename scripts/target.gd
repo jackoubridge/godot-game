@@ -10,7 +10,7 @@ var rot: float
 var health: float
 @export var health_bar: Node2D
 
-signal took_damage
+signal health_update
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,4 +28,4 @@ func _process(_delta: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
 		health -= 1
-		took_damage.emit() # Tell the health bar to update
+		health_update.emit() # Tell the health bar to update

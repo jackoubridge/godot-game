@@ -6,31 +6,27 @@ var num_squares: int = 0
 var num_triangles: int = 0
 @export var num_triangles_threshold: int = 5
 
-var square_path = preload("res://scenes/square.tscn")
-var triangle_path = preload("res://scenes/triangle.tscn")
+var square_path = preload("res://scenes/targets/square.tscn")
+var triangle_path = preload("res://scenes/targets/triangle.tscn")
+
 var player_pos: Vector2
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	global_signals.target_destroyed.connect(_on_target_destroyed)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-	
 func _physics_process(_delta: float) -> void:
 	if num_squares < num_squares_threshold:
-		spawn_target("square")
+		spawn_target(global_enums.target_types.SQUARE)
 	if num_triangles < num_triangles_threshold:
-		spawn_target("triangle")
+		spawn_target(global_enums.target_types.TRIANGLE)
 
-func spawn_target(type):
+func spawn_target(target_type):
 	var target
 
-	if (type == "square"):
+	if (target_type == global_enums.target_types.SQUARE):
 		target = square_path.instantiate()
 		num_squares += 1
-	elif (type == "triangle"):
+	elif (target_type == global_enums.target_types.TRIANGLE):
 		target = triangle_path.instantiate()
 		num_triangles += 1
 
@@ -46,7 +42,7 @@ func spawn_target(type):
 	get_parent().get_parent().add_child(target)
 
 func _on_target_destroyed(type):
-	if (type == "square"):
+	if (type == global_enums.target_types.SQUARE):
 		num_squares -= 1
-	elif (type == "triangle"):
+	elif (type == global_enums.target_types.TRIANGLE):
 		num_triangles -= 1

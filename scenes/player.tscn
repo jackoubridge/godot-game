@@ -51,7 +51,7 @@ texture = ExtResource("3_qhqgy")
 [node name="BulletStart" type="Node2D" parent="CharacterBody2D/Gun" unique_id=1165560921]
 position = Vector2(335.5, 180)
 
-[node name="Timer" type="Timer" parent="CharacterBody2D" unique_id=388020038]
+[node name="Timer" type="Timer" parent="CharacterBody2D/Gun" unique_id=388020038]
 wait_time = 0.5
 one_shot = true
 
@@ -59,4 +59,4 @@ one_shot = true
 position = Vector2(320, 180)
 
 [connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
-[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/Gun/Timer" to="CharacterBody2D" method="_on_timer_timeout"]

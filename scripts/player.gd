@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 func shoot():
 	if can_shoot:
 		can_shoot = false
-		$Timer.start()
+		$Gun/Timer.start()
 		var bullet = bullet_path.instantiate()
 		bullet.dir = rotation
 		bullet.pos = $Gun/BulletStart.global_position

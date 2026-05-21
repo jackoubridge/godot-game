@@ -8,6 +8,7 @@
 script = ExtResource("1_u1wel")
 target_type = 1
 health_max = 5.0
+xp_value = 5.0
 area_2d = NodePath("Area2D")
 metadata/_custom_type_script = "uid://7d4kllo3pevi"
 

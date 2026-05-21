@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var aim_speed: float = 50
 @export var recoil_strength: float = 75
 
+var xp: int
 var can_shoot: bool = true
 
 var bullet_path = preload("res://scenes/bullet.tscn")
@@ -13,12 +14,7 @@ var bullet_path = preload("res://scenes/bullet.tscn")
 func _process(delta: float) -> void:
 	# Look at mouse - smoothed
 	var target = (get_global_mouse_position() - global_position).angle()
-
-	global_rotation = rotate_toward(
-		global_rotation,
-		target,
-		aim_speed * delta
-	)
+	global_rotation = rotate_toward(global_rotation, target, aim_speed * delta)
 
 func _physics_process(delta: float) -> void:
 	# Movement
@@ -35,22 +31,33 @@ func _physics_process(delta: float) -> void:
 	
 func shoot():
 	if can_shoot:
+		# Handle shoot cooldown
 		can_shoot = false
 		$Gun/Timer.start()
+
+		# Spawn bullet
 		var bullet = bullet_path.instantiate()
 		bullet.dir = rotation
 		bullet.pos = $Gun/BulletStart.global_position
 		bullet.rot = global_rotation
+		bullet.owner_node = self
 		get_parent().add_child(bullet)
 
+		# Give knockback to player
 		var forward = transform.x
 		var recoil_dir = -forward
 		velocity += recoil_dir * recoil_strength
 		
+		# Play gun recoil animation
 		$Gun.recoil()
 
+func add_xp(amount):
+	xp += amount
+
+# Collision detection
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	pass
 
+# Handle shoot cooldown
 func _on_timer_timeout() -> void:
 	can_shoot = true

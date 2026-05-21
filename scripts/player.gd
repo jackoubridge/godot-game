@@ -5,18 +5,17 @@ extends CharacterBody2D
 @export var friction: float = 5
 @export var aim_speed: float = 50
 @export var recoil_strength: float = 75
+@export var bullet_path: PackedScene
 
 var xp: int
 var can_shoot: bool = true
 
-var bullet_path = preload("res://scenes/bullet.tscn")
-
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	
 	# Look at mouse - smoothed
 	var target = (get_global_mouse_position() - global_position).angle()
 	global_rotation = rotate_toward(global_rotation, target, aim_speed * delta)
 
-func _physics_process(delta: float) -> void:
 	# Movement
 	var input = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	var velocity_x: float = 1.0 - exp( -(acceleration if input.x else friction) * delta)

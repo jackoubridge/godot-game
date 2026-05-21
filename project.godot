@@ -21,7 +21,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 global_signals="*uid://bipgjq3dfrnex"
-global_enums="*uid://dv03aef7tny3s"
 
 [display]
 

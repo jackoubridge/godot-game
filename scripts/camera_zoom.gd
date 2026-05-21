@@ -26,4 +26,3 @@ func _input(event: InputEvent) -> void:
 	elif event is InputEventMagnifyGesture:
 		if desired_zoom*event.factor < zoom_max and desired_zoom*event.factor > zoom_min:
 			desired_zoom *= event.factor
-					

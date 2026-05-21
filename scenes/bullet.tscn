@@ -8,6 +8,7 @@ radius = 5.0
 
 [node name="Area2D" type="Area2D" unique_id=1774271465 groups=["bullet"]]
 script = ExtResource("1_y25gk")
+damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2001800890]
 shape = SubResource("CircleShape2D_h1aey")

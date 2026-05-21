@@ -3,9 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://bm3iltffouvrb" path="res://assets/player-icon.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b4lh526ttkykw" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://cpeqlxu6je2k3" path="res://scripts/camera_zoom.gd" id="2_dqkch"]
+[ext_resource type="PackedScene" uid="uid://dqecxd5hlio2f" path="res://scenes/bullet.tscn" id="2_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://cdck0dwbflhp6" path="res://assets/player-gun.png" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://b1uep1n0l4l3i" path="res://scripts/recoil.gd" id="4_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://cujbem3j3vq3x" path="res://scenes/spawner.tscn" id="6_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://4eeujtsyimwv" path="res://scenes/targets/square.tscn" id="7_fjrip"]
+[ext_resource type="PackedScene" uid="uid://ca3phsmklxm61" path="res://scenes/targets/triangle.tscn" id="8_smehm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
 
@@ -14,6 +17,7 @@
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=83792797]
 position = Vector2(320, 180)
 script = ExtResource("1_g2els")
+bullet_path = ExtResource("2_ur7pv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1714768612]
 shape = SubResource("CircleShape2D_3vyb7")
@@ -57,6 +61,8 @@ one_shot = true
 
 [node name="Spawner" parent="." unique_id=773743234 instance=ExtResource("6_tuyoq")]
 position = Vector2(320, 180)
+square_scene = ExtResource("7_fjrip")
+triangle_scene = ExtResource("8_smehm")
 
 [connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="CharacterBody2D/Gun/Timer" to="CharacterBody2D" method="_on_timer_timeout"]

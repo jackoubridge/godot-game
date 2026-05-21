@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://1c0s25srldvh" path="res://assets/triangle.png" id="2_l0nj1"]
 [ext_resource type="PackedScene" uid="uid://buvbroanxh6qj" path="res://scenes/health_bar.tscn" id="3_8ul5g"]
 
-[node name="Triangle" type="Node2D" unique_id=1409643273 node_paths=PackedStringArray("area_2d")]
+[node name="Triangle" type="Node2D" unique_id=371975019 node_paths=PackedStringArray("area_2d")]
 script = ExtResource("1_u1wel")
-target_type = 1
+target_id = "triangle"
 health_max = 5.0
 xp_value = 5.0
 area_2d = NodePath("Area2D")
@@ -26,5 +26,4 @@ texture = ExtResource("2_l0nj1")
 [node name="Health Bar" parent="." unique_id=810715880 instance=ExtResource("3_8ul5g")]
 position = Vector2(0, 19)
 
-[connection signal="health_update" from="." to="Health Bar" method="_on_target_health_update"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

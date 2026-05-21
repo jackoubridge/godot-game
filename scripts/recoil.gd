@@ -15,6 +15,4 @@ func recoil():
 	recoil_tween = create_tween()
 
 	recoil_tween.tween_property(self, "position", rest_position + recoil_offset, 0.05)
-	recoil_tween.tween_property(self, "position", rest_position, 0.1)\
-		.set_trans(Tween.TRANS_SINE)\
-		.set_ease(Tween.EASE_OUT)
+	recoil_tween.tween_property(self, "position", rest_position, 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

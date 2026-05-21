@@ -8,6 +8,8 @@ var speed: float = 225
 var velocity: Vector2
 var owner_node
 
+@export var damage: float
+
 func _ready():
 	global_position = pos
 	global_rotation = rot

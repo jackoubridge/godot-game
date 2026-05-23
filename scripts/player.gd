@@ -59,7 +59,7 @@ func add_xp(amount):
 	if (xp >= 20):
 		level += 1
 		xp -= 20
-		$Gun/Timer.wait_time = 0.5 ** level
+		$Gun/Timer.wait_time = max(0.5 ** level, 0.5 ** 5)
 	level_update.emit(level)
 	xp_update.emit(xp)
 

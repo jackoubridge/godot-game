@@ -45,5 +45,5 @@ func _on_target_destroyed(target: Target):
 		triangles.erase(target)
 		
 func update_thresholds(level: int):
-	num_squares_threshold = 2 * level
-	num_triangles_threshold = 2 * level
+	num_squares_threshold = min(2 ** level, 2 ** 5)
+	num_triangles_threshold = min(2 ** level, 2 ** 5)

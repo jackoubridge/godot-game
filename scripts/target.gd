@@ -30,7 +30,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		take_damage(area)
 
 func destroy():
-
 	global_signals.target_destroyed.emit(self)
 	if last_damage_source != null:
 		last_damage_source.add_xp(xp_value)
@@ -39,8 +38,7 @@ func destroy():
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	$"Health Bar".queue_free()
 	var tween = create_tween()
-	tween.parallel().tween_property(self, "scale", Vector2.ZERO, 0.12)
-	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.12)
+	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.01)
 	await tween.finished
 
 	queue_free()

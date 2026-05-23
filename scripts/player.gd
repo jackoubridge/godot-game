@@ -7,7 +7,10 @@ extends CharacterBody2D
 @export var recoil_strength: float = 75
 @export var bullet_path: PackedScene
 
-var xp: int
+signal xp_update(value: int)
+signal level_update(value: int)
+var level:int = 1
+var xp: int = 0
 var can_shoot: bool = true
 
 func _physics_process(delta: float) -> void:
@@ -52,6 +55,13 @@ func shoot():
 
 func add_xp(amount):
 	xp += amount
+	
+	if (xp >= 20):
+		level += 1
+		xp -= 20
+		$Gun/Timer.wait_time = 0.5 ** level
+	level_update.emit(level)
+	xp_update.emit(xp)
 
 # Collision detection
 func _on_area_2d_area_entered(_area: Area2D) -> void:

@@ -15,7 +15,7 @@ func _ready():
 	global_rotation = rot
 	reset_physics_interpolation()	
 	await get_tree().create_timer(5).timeout
-	queue_free()
+	destroy()
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(speed, 0).rotated(dir)
@@ -23,4 +23,14 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("target"):
-		queue_free()
+		destroy()
+
+func destroy():
+	# Death animation
+	$CollisionShape2D.set_deferred("disabled", true)
+	var tween = create_tween()
+	tween.parallel().tween_property(self, "scale", Vector2.ZERO, 0.12)
+	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.12)
+	await tween.finished
+
+	queue_free()

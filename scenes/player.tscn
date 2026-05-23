@@ -14,7 +14,7 @@
 
 [node name="Player" type="Node2D" unique_id=1618710591]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=83792797]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=83792797 groups=["player"]]
 position = Vector2(320, 180)
 script = ExtResource("1_g2els")
 bullet_path = ExtResource("2_ur7pv")

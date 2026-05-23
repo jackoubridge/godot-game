@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var num_squares_threshold: int = 5
-@export var num_triangles_threshold: int = 5
+@export var num_squares_threshold: int = 2
+@export var num_triangles_threshold: int = 2
 
 @export var square_scene: PackedScene
 @export var triangle_scene: PackedScene
@@ -10,6 +10,7 @@ var triangles: Array[Target] = []
 
 func _ready() -> void:
 	global_signals.target_destroyed.connect(_on_target_destroyed)
+	$"../CharacterBody2D".level_update.connect(update_thresholds)
 
 func _physics_process(_delta: float) -> void:
 	if squares.size() < num_squares_threshold:
@@ -33,7 +34,7 @@ func spawn_target(target_path: PackedScene):
 	if randf() < 0.5:
 		random_y *= -1
 
-	target.pos = Vector2(random_x, random_y) + global_position
+	target.pos = Vector2(random_x, random_y) + $"../CharacterBody2D".global_position
 	target.rot = randf_range(0, 2*PI)
 	get_parent().get_parent().add_child(target)
 
@@ -42,3 +43,7 @@ func _on_target_destroyed(target: Target):
 		squares.erase(target)
 	elif (target.target_id == &"triangle"):
 		triangles.erase(target)
+		
+func update_thresholds(level: int):
+	num_squares_threshold = 2 * level
+	num_triangles_threshold = 2 * level

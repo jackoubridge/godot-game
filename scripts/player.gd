@@ -12,9 +12,10 @@ signal level_update(value: int)
 var level:int = 1
 var xp: int = 0
 var can_shoot: bool = true
+var level_up_xp: int = 10
 
 func _physics_process(delta: float) -> void:
-	
+
 	# Look at mouse - smoothed
 	var target = (get_global_mouse_position() - global_position).angle()
 	global_rotation = rotate_toward(global_rotation, target, aim_speed * delta)
@@ -25,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = lerp(velocity.x, input.x * speed, velocity_x)
 	var velocity_y: float = 1.0 - exp( -(acceleration if input.y else friction) * delta)
 	velocity.y = lerp(velocity.y, input.y * speed, velocity_y)
-	
+
 	if Input.is_action_pressed("shoot"):
 		shoot()
 
@@ -55,13 +56,14 @@ func shoot():
 
 func add_xp(amount):
 	xp += amount
-	
-	if (xp >= 20):
+
+	if (xp >= level_up_xp):
 		level += 1
-		xp -= 20
+		xp -= level_up_xp
+		level_up_xp = 5 * (2 ** level)
 		$Gun/Timer.wait_time = max(0.5 ** level, 0.5 ** 5)
 	level_update.emit(level)
-	xp_update.emit(xp)
+	xp_update.emit(xp, level_up_xp)
 
 # Collision detection
 func _on_area_2d_area_entered(_area: Area2D) -> void:

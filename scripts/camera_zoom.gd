@@ -14,6 +14,7 @@ func _process(_delta: float) -> void:
 	zoom = lerp(zoom, desired_zoom, .2)
 
 func _input(event: InputEvent) -> void:
+	# Mouse scroll
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
@@ -22,7 +23,7 @@ func _input(event: InputEvent) -> void:
 			elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				if desired_zoom < zoom_max:
 					desired_zoom += zoom_speed
-
+	# Trackpad zoom
 	elif event is InputEventMagnifyGesture:
 		if desired_zoom*event.factor < zoom_max and desired_zoom*event.factor > zoom_min:
 			desired_zoom *= event.factor

@@ -5,10 +5,10 @@ extends Node2D
 var rest_position: Vector2
 var recoil_tween: Tween
 
-func _ready():
+func _ready() -> void:
 	rest_position = position
 
-func recoil():
+func recoil() -> void:
 	if recoil_tween:
 		recoil_tween.kill()
 

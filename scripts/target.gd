@@ -18,27 +18,33 @@ func _ready() -> void:
 	area_2d.global_rotation = rot
 	reset_physics_interpolation()
 
-func take_damage(source: Area2D):
-	health -= source.damage
+func take_damage(damage: float, owner_node) -> void:
+	health -= damage
 	$"Health Bar".update()
-	last_damage_source = source.owner_node
+	last_damage_source = owner_node
 	if health <= 0:
 		destroy()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
-		take_damage(area)
+		take_damage(area.damage, area.owner_node)
 
-func destroy():
+func destroy() -> void:
+	# Tell spawner this is destroyed
 	global_signals.target_destroyed.emit(self)
-	if last_damage_source != null:
-		last_damage_source.add_xp(xp_value)
+
+	# Give xp to damage source
+	if (last_damage_source != null):
+		if (last_damage_source.has_method("add_xp")):
+			last_damage_source.add_xp(xp_value)
 
 	# Death animation
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	$"Health Bar".queue_free()
 	var tween = create_tween()
-	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.01)
+	tween.parallel().tween_property(self, "scale", Vector2.ZERO, 0.1)
+	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.1)
 	await tween.finished
 
+	# Destroy
 	queue_free()

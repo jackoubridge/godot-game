@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 	if triangles.size() < num_triangles_threshold:
 		spawn_target(triangle_scene)
 
-func spawn_target(target_path: PackedScene):
+func spawn_target(target_path: PackedScene) -> void:
 
 	var target: Target = target_path.instantiate()
 
@@ -38,12 +38,12 @@ func spawn_target(target_path: PackedScene):
 	target.rot = randf_range(0, 2*PI)
 	get_parent().get_parent().add_child(target)
 
-func _on_target_destroyed(target: Target):
+func _on_target_destroyed(target: Target) -> void:
 	if (target.target_id == &"square"):
 		squares.erase(target)
 	elif (target.target_id == &"triangle"):
 		triangles.erase(target)
-		
-func update_thresholds(level: int):
+
+func update_thresholds(level: int) -> void:
 	num_squares_threshold = min(2 ** level, 2 ** 5)
 	num_triangles_threshold = min(2 ** level, 2 ** 5)

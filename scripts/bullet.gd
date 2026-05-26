@@ -1,16 +1,16 @@
 extends Area2D
 
+# Set by owner
+var owner_node
 var pos: Vector2
 var rot: float
 var dir: float
+var speed: float
+var damage: float
 
-var speed: float = 225
 var velocity: Vector2
-var owner_node
 
-@export var damage: float
-
-func _ready():
+func _ready() -> void:
 	global_position = pos
 	global_rotation = rot
 	reset_physics_interpolation()	
@@ -25,12 +25,11 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("target"):
 		destroy()
 
-func destroy():
+func destroy() -> void:
 	# Death animation
 	$CollisionShape2D.set_deferred("disabled", true)
 	var tween = create_tween()
-	tween.parallel().tween_property(self, "scale", Vector2.ZERO, 0.12)
-	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.12)
+	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.01)
 	await tween.finished
 
 	queue_free()

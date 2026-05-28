@@ -21,7 +21,7 @@ func update() -> void:
 		value_tween.kill()
 		value_tween = null
 
-	modulate.a = 1.0
+	$ProgressBar.modulate.a = 1.0
 	$ProgressBar.visible = true
 
 	var target_value = get_parent().health / get_parent().health_max

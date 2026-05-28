@@ -70,10 +70,10 @@ func add_xp(amount) -> void:
 
 	if (xp >= level_up_xp):
 		level += 1
+		level_update.emit(level)
 		xp -= level_up_xp
 		level_up_xp = 5 * (2 ** level)
 		$Gun/Timer.wait_time = max(0.5 ** level, 0.5 ** 5)
-	level_update.emit(level)
 	xp_update.emit(xp, level_up_xp)
 
 # Collision detection

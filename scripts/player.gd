@@ -1,5 +1,12 @@
 extends CharacterBody2D
 
+# Main player stats
+@export var movement_speed: float = 200
+@export var bullet_speed: float = 225
+@export var bullet_damage: float = 1
+@export var recoil_strength: float = bullet_speed / 3
+@export var health_max: float = 10
+
 @export var acceleration: float = 10
 @export var friction: float = 5
 @export var aim_speed: float = 50
@@ -7,16 +14,12 @@ extends CharacterBody2D
 
 signal xp_update(value: int)
 signal level_update(value: int)
+
 var level:int = 1
+var level_up_xp: int = 10
 var xp: int = 0
 var can_shoot: bool = true
-var level_up_xp: int = 10
-
-# Main player stats
-@export var movement_speed: float = 200
-@export var bullet_speed: float = 225
-@export var bullet_damage: float = 1
-@export var recoil_strength: float = bullet_speed / 3
+var health: float = health_max
 
 func _physics_process(delta: float) -> void:
 

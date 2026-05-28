@@ -10,7 +10,7 @@ var triangles: Array[Target] = []
 
 func _ready() -> void:
 	global_signals.target_destroyed.connect(_on_target_destroyed)
-	$"../CharacterBody2D".level_update.connect(update_thresholds)
+	$"..".level_update.connect(update_thresholds)
 
 func _physics_process(_delta: float) -> void:
 	if squares.size() < num_squares_threshold:

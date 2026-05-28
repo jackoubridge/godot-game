@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dqecxd5hlio2f" path="res://scenes/bullet.tscn" id="2_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://cdck0dwbflhp6" path="res://assets/player-gun.png" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://e0xdo4whg8ev" path="res://scripts/player_movement.gd" id="3_y4r1p"]
-[ext_resource type="Script" uid="uid://b1uep1n0l4l3i" path="res://scripts/recoil.gd" id="4_qlg0r"]
+[ext_resource type="Script" uid="uid://b1uep1n0l4l3i" path="res://scripts/gun.gd" id="4_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://cujbem3j3vq3x" path="res://scenes/spawner.tscn" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://4eeujtsyimwv" path="res://scenes/targets/square.tscn" id="7_fjrip"]
 [ext_resource type="PackedScene" uid="uid://ca3phsmklxm61" path="res://scenes/targets/triangle.tscn" id="8_smehm"]
@@ -15,7 +15,6 @@
 
 [node name="Player" type="Node2D" unique_id=1618710591 groups=["player"]]
 script = ExtResource("1_g2els")
-bullet_path = ExtResource("2_ur7pv")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=83792797 node_paths=PackedStringArray("player")]
 script = ExtResource("3_y4r1p")
@@ -42,10 +41,12 @@ position = Vector2(320, 180)
 scale = Vector2(0.022, 0.022)
 texture = ExtResource("1_3vyb7")
 
-[node name="Gun" type="Node2D" parent="CharacterBody2D" unique_id=1172378713]
+[node name="Gun" type="Node2D" parent="CharacterBody2D" unique_id=1172378713 node_paths=PackedStringArray("player")]
 position = Vector2(-320, -180)
 script = ExtResource("4_qlg0r")
 recoil_offset = Vector2(-2, 0)
+player = NodePath("../..")
+bullet_path = ExtResource("2_ur7pv")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Gun" unique_id=256848555]
 z_index = -1
@@ -66,4 +67,4 @@ square_scene = ExtResource("7_fjrip")
 triangle_scene = ExtResource("8_smehm")
 
 [connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
-[connection signal="timeout" from="CharacterBody2D/Gun/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/Gun/Timer" to="CharacterBody2D/Gun" method="_on_timer_timeout"]

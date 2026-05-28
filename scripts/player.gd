@@ -16,10 +16,10 @@ var xp: int = 0
 
 var health: float = health_max
 var shoot_cooldown: float = 0.5
+var last_damage_source = null
 
 func add_xp(amount) -> void:
 	xp += amount
-
 	if (xp >= level_up_xp):
 		level += 1
 		level_update.emit(level)
@@ -27,3 +27,11 @@ func add_xp(amount) -> void:
 		level_up_xp = 5 * (2 ** level)
 		shoot_cooldown = max(0.5 ** level, 0.5 ** 5)
 	xp_update.emit(xp, level_up_xp)
+
+func take_damage(damage: float, owner_node) -> void:
+	health -= damage
+	$"Health Bar".update(health, health_max)
+	last_damage_source = owner_node
+
+	if health <= 0:
+		get_tree().reload_current_scene()

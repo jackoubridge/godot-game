@@ -6,13 +6,20 @@ var value_smooth_duration: float = 0.05
 var fade_tween: Tween
 var value_tween: Tween
 
+@export var move_with: CharacterBody2D = null
+var offset: Vector2 = Vector2(0.0, 19.0)
+
 func _ready() -> void:
 	$ProgressBar.visible = false
 	$ProgressBar.min_value = 0.0
 	$ProgressBar.max_value = 1.0
 	$ProgressBar.step = 0.01
 
-func update() -> void:
+func _physics_process(_delta: float) -> void:
+	if move_with:
+		global_position = move_with.global_position + offset
+
+func update(health: float, health_max: float) -> void:
 	if fade_tween:
 		fade_tween.kill()
 		fade_tween = null
@@ -24,7 +31,7 @@ func update() -> void:
 	$ProgressBar.modulate.a = 1.0
 	$ProgressBar.visible = true
 
-	var target_value = get_parent().health / get_parent().health_max
+	var target_value = health / health_max
 
 	value_tween = create_tween()
 	value_tween.tween_property($ProgressBar, "value", target_value, value_smooth_duration)

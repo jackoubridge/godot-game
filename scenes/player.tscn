@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cujbem3j3vq3x" path="res://scenes/spawner.tscn" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://4eeujtsyimwv" path="res://scenes/targets/square.tscn" id="7_fjrip"]
 [ext_resource type="PackedScene" uid="uid://ca3phsmklxm61" path="res://scenes/targets/triangle.tscn" id="8_smehm"]
+[ext_resource type="PackedScene" uid="uid://buvbroanxh6qj" path="res://scenes/health_bar.tscn" id="11_d2wvv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
 
@@ -23,7 +24,7 @@ player = NodePath("..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1714768612]
 shape = SubResource("CircleShape2D_3vyb7")
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D" unique_id=128332924 groups=["player"]]
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" unique_id=128332924]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D" unique_id=749730385]
 shape = SubResource("CircleShape2D_3vyb7")
@@ -61,6 +62,10 @@ position = Vector2(335.5, 180)
 [node name="Timer" type="Timer" parent="CharacterBody2D/Gun" unique_id=388020038]
 wait_time = 0.5
 one_shot = true
+
+[node name="Health Bar" parent="." unique_id=810715880 node_paths=PackedStringArray("move_with") instance=ExtResource("11_d2wvv")]
+position = Vector2(0, 19)
+move_with = NodePath("../CharacterBody2D")
 
 [node name="Spawner" parent="." unique_id=773743234 instance=ExtResource("6_tuyoq")]
 square_scene = ExtResource("7_fjrip")

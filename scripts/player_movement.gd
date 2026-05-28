@@ -26,5 +26,6 @@ func knockback(recoil_strength: float) -> void:
 	velocity += recoil_dir * recoil_strength
 	
 # Collision detection
-func _on_area_2d_area_entered(_area: Area2D) -> void:
-	pass
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("target"):
+		player.take_damage(area.get_parent().attack_damage, area.get_parent())

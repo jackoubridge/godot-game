@@ -11,6 +11,7 @@ script = ExtResource("1_i3yty")
 target_id = "square"
 health_max = 3.0
 xp_value = 3.0
+attack_damage = 1.0
 area_2d = NodePath("Area2D")
 metadata/_custom_type_script = "uid://7d4kllo3pevi"
 

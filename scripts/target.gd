@@ -5,6 +5,7 @@ class_name Target
 @export var target_id: String
 @export var health_max: float
 @export var xp_value: float
+@export var attack_damage: float
 @export var area_2d: Area2D
 
 var pos: Vector2
@@ -20,7 +21,7 @@ func _ready() -> void:
 
 func take_damage(damage: float, owner_node) -> void:
 	health -= damage
-	$"Health Bar".update()
+	$"Health Bar".update(health, health_max)
 	last_damage_source = owner_node
 	if health <= 0:
 		destroy()

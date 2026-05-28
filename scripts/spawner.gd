@@ -34,7 +34,7 @@ func spawn_target(target_path: PackedScene) -> void:
 	if randf() < 0.5:
 		random_y *= -1
 
-	target.pos = Vector2(random_x, random_y) + $"../CharacterBody2D".global_position
+	target.pos = Vector2(random_x, random_y) + $"..".global_position
 	target.rot = randf_range(0, 2*PI)
 	get_parent().get_parent().add_child(target)
 

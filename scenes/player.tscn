@@ -15,7 +15,6 @@
 [node name="Player" type="Node2D" unique_id=1618710591]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=83792797 groups=["player"]]
-position = Vector2(320, 180)
 script = ExtResource("1_g2els")
 bullet_path = ExtResource("2_ur7pv")
 
@@ -60,7 +59,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Spawner" parent="." unique_id=773743234 instance=ExtResource("6_tuyoq")]
-position = Vector2(320, 180)
 square_scene = ExtResource("7_fjrip")
 triangle_scene = ExtResource("8_smehm")
 

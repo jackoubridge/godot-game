@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cdck0dwbflhp6" path="res://assets/player-gun.png" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://e0xdo4whg8ev" path="res://scripts/player_movement.gd" id="3_y4r1p"]
 [ext_resource type="Script" uid="uid://b1uep1n0l4l3i" path="res://scripts/gun.gd" id="4_qlg0r"]
-[ext_resource type="PackedScene" uid="uid://cujbem3j3vq3x" path="res://scenes/spawner.tscn" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://4eeujtsyimwv" path="res://scenes/targets/square.tscn" id="7_fjrip"]
 [ext_resource type="PackedScene" uid="uid://ca3phsmklxm61" path="res://scenes/targets/triangle.tscn" id="8_smehm"]
+[ext_resource type="Script" uid="uid://dsovohspmbsbt" path="res://scripts/spawner.gd" id="8_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://buvbroanxh6qj" path="res://scenes/health_bar.tscn" id="11_d2wvv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
@@ -63,13 +63,21 @@ position = Vector2(335.5, 180)
 wait_time = 0.5
 one_shot = true
 
+[node name="SquareSpawner" type="Node2D" parent="CharacterBody2D" unique_id=692800304]
+script = ExtResource("8_y4r1p")
+entity_scene = ExtResource("7_fjrip")
+entity_id = "square"
+metadata/_custom_type_script = "uid://dsovohspmbsbt"
+
+[node name="TriangleSpawner" type="Node2D" parent="CharacterBody2D" unique_id=1329641497]
+script = ExtResource("8_y4r1p")
+entity_scene = ExtResource("8_smehm")
+entity_id = "triangle"
+metadata/_custom_type_script = "uid://dsovohspmbsbt"
+
 [node name="Health Bar" parent="." unique_id=810715880 node_paths=PackedStringArray("move_with") instance=ExtResource("11_d2wvv")]
 position = Vector2(0, 19)
 move_with = NodePath("../CharacterBody2D")
-
-[node name="Spawner" parent="." unique_id=773743234 instance=ExtResource("6_tuyoq")]
-square_scene = ExtResource("7_fjrip")
-triangle_scene = ExtResource("8_smehm")
 
 [connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="CharacterBody2D/Gun/Timer" to="CharacterBody2D/Gun" method="_on_timer_timeout"]

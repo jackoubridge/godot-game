@@ -6,7 +6,7 @@
 
 [node name="Triangle" type="Node2D" unique_id=371975019 node_paths=PackedStringArray("area_2d")]
 script = ExtResource("1_u1wel")
-target_id = "triangle"
+entity_id = "triangle"
 health_max = 5.0
 xp_value = 5.0
 attack_damage = 1.0

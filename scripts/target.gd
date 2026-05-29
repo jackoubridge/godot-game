@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Target
 
-@export var target_id: String
+@export var entity_id: String
 @export var health_max: float
 @export var xp_value: float
 @export var attack_damage: float
@@ -19,6 +19,14 @@ func _ready() -> void:
 	area_2d.global_rotation = rot
 	reset_physics_interpolation()
 
+	scale = Vector2.ZERO
+	modulate.a = 0.0
+
+	var tween = create_tween()
+	tween.parallel().tween_property(self, "scale", Vector2(1.0, 1.0), 0.1)
+	tween.parallel().tween_property(self, "modulate:a", 1.0, 0.1)
+	await tween.finished
+
 func take_damage(damage: float, owner_node) -> void:
 	health -= damage
 	$"Health Bar".update(health, health_max)
@@ -32,7 +40,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func destroy() -> void:
 	# Tell spawner this is destroyed
-	global_signals.target_destroyed.emit(self)
+	global_signals.entity_destroyed.emit(self)
 
 	# Give xp to damage source
 	if (last_damage_source != null):

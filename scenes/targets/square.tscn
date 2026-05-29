@@ -8,7 +8,7 @@
 
 [node name="Square" type="Node2D" unique_id=353023343 node_paths=PackedStringArray("area_2d")]
 script = ExtResource("1_i3yty")
-target_id = "square"
+entity_id = "square"
 health_max = 3.0
 xp_value = 3.0
 attack_damage = 1.0

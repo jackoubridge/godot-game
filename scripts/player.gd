@@ -13,20 +13,26 @@ signal level_update(value: int)
 var level:int = 1
 var level_up_xp: int = 10
 var xp: int = 0
+var max_level: int = 5
+var can_add_xp: bool = true
 
 var health: float = health_max
 var shoot_cooldown: float = 0.5
 var last_damage_source = null
 
 func add_xp(amount) -> void:
-	xp += amount
-	if (xp >= level_up_xp):
-		level += 1
-		level_update.emit(level)
-		xp -= level_up_xp
-		level_up_xp = 5 * (2 ** level)
-		shoot_cooldown = max(0.5 ** level, 0.5 ** 5)
-	xp_update.emit(xp, level_up_xp)
+	if can_add_xp:
+		xp += amount
+		if (xp >= level_up_xp):
+			level += 1
+			if level == 5:
+				can_add_xp = false
+				xp = 0
+			level_update.emit(level)
+			xp -= level_up_xp
+			level_up_xp = 5 * (2 ** level)
+			shoot_cooldown = max(0.5 ** level, 0.5 ** 5)
+		xp_update.emit(xp, level_up_xp)
 
 func take_damage(damage: float, owner_node) -> void:
 	health -= damage

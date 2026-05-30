@@ -12,6 +12,7 @@ var pos: Vector2
 var rot: float
 var health: float
 var last_damage_source = null
+var is_destroying: bool = false
 
 func _ready() -> void:
 	global_position = pos
@@ -39,6 +40,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		take_damage(area.damage, area.owner_node)
 
 func destroy() -> void:
+	is_destroying = true
 	# Tell spawner this is destroyed
 	global_signals.entity_destroyed.emit(self)
 
@@ -57,3 +59,7 @@ func destroy() -> void:
 
 	# Destroy
 	queue_free()
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.is_in_group("player_entity_radius") and not is_destroying:
+		destroy()

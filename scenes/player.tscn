@@ -14,6 +14,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d2wvv"]
+
 [node name="Player" type="Node2D" unique_id=1618710591 groups=["player"]]
 script = ExtResource("1_g2els")
 
@@ -74,6 +76,12 @@ script = ExtResource("8_y4r1p")
 entity_scene = ExtResource("8_smehm")
 entity_id = "triangle"
 metadata/_custom_type_script = "uid://dsovohspmbsbt"
+
+[node name="player_entity_radius" type="Area2D" parent="CharacterBody2D" unique_id=317838385 groups=["player_entity_radius"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/player_entity_radius" unique_id=862934280]
+scale = Vector2(100, 100)
+shape = SubResource("CircleShape2D_d2wvv")
 
 [node name="Health Bar" parent="." unique_id=810715880 node_paths=PackedStringArray("move_with") instance=ExtResource("11_d2wvv")]
 position = Vector2(0, 19)

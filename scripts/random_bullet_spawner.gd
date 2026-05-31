@@ -27,7 +27,7 @@ func shoot() -> void:
 	bullet.pos = spawn_pos
 	bullet.dir = (Vector2(screen_size_x/2, screen_size_y/2) - bullet.pos).angle()
 	bullet.rot = 0
-	bullet.speed = 225
+	bullet.speed = 300
 	bullet.damage = 5
 
 	$"..".add_child(bullet)

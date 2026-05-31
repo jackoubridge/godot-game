@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="godot-game"
+config/name="shape-shooter"
 config/version="0.1.0"
 run/main_scene="uid://wrxketglm1ox"
 config/auto_accept_quit=false

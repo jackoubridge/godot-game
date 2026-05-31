@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://wrxketglm1ox"]
+
+[ext_resource type="Theme" uid="uid://dmrkd1ktljp3u" path="res://assets/ui_theme.tres" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://6cayq28b6yps" path="res://scenes/main_menu.gd" id="2_ekxnf"]
+[ext_resource type="Shader" uid="uid://d0woaxovmd07m" path="res://assets/blur.gdshader" id="3_wu84c"]
+[ext_resource type="PackedScene" uid="uid://xrbe0t3xhbxk" path="res://scenes/main_menu_background.tscn" id="4_wu84c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ln24"]
+shader = ExtResource("3_wu84c")
+shader_parameter/blur_amount = 2.000000095
+
+[node name="MainMenu" type="Control" unique_id=1135277160]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_l6cm7")
+script = ExtResource("2_ekxnf")
+
+[node name="BackgroundMenu" parent="." unique_id=29074476 instance=ExtResource("4_wu84c")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2099931602]
+material = SubResource("ShaderMaterial_8ln24")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1755417544]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=1515821573]
+layout_mode = 2
+text = "Play"
+
+[node name="Settings" type="Button" parent="VBoxContainer" unique_id=1085626304]
+layout_mode = 2
+disabled = true
+text = "Settings"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=345989333]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

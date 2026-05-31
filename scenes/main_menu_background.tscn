@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://xrbe0t3xhbxk"]
+
+[ext_resource type="PackedScene" uid="uid://bkw845o2063ns" path="res://scenes/background.tscn" id="1_l08xq"]
+[ext_resource type="Script" uid="uid://dsovohspmbsbt" path="res://scripts/spawner.gd" id="2_76srq"]
+[ext_resource type="PackedScene" uid="uid://4eeujtsyimwv" path="res://scenes/targets/square.tscn" id="3_hdp06"]
+[ext_resource type="PackedScene" uid="uid://ca3phsmklxm61" path="res://scenes/targets/triangle.tscn" id="4_hdp06"]
+[ext_resource type="Script" uid="uid://wno73dpt12x6" path="res://scripts/random_bullet_spawner.gd" id="5_xkv0d"]
+[ext_resource type="PackedScene" uid="uid://dqecxd5hlio2f" path="res://scenes/bullet.tscn" id="6_os371"]
+
+[node name="BackgroundMenu" type="Node2D" unique_id=29074476]
+
+[node name="Background" parent="." unique_id=1117696067 instance=ExtResource("1_l08xq")]
+
+[node name="spawner" type="Node2D" parent="Background" unique_id=1004239393]
+position = Vector2(320, 180)
+script = ExtResource("2_76srq")
+entity_scene = ExtResource("3_hdp06")
+entity_id = "square"
+entity_threshold = 10
+is_static = true
+radius_max = Vector2(290, 150)
+metadata/_custom_type_script = "uid://dsovohspmbsbt"
+
+[node name="spawner2" type="Node2D" parent="Background" unique_id=1711327376]
+position = Vector2(320, 180)
+script = ExtResource("2_76srq")
+entity_scene = ExtResource("4_hdp06")
+entity_id = "triangle"
+entity_threshold = 10
+is_static = true
+radius_max = Vector2(290, 150)
+metadata/_custom_type_script = "uid://dsovohspmbsbt"
+
+[node name="RandomBulletSpawner" type="Node2D" parent="Background" unique_id=443873143]
+script = ExtResource("5_xkv0d")
+bullet_path = ExtResource("6_os371")

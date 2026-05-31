@@ -29,7 +29,7 @@ func destroy() -> void:
 	# Death animation
 	$CollisionShape2D.set_deferred("disabled", true)
 	var tween = create_tween()
-	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.01)
+	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.075)
 	await tween.finished
 
 	queue_free()

@@ -37,4 +37,7 @@ func take_damage(damage: float, owner_node) -> void:
 	last_damage_source = owner_node
 
 	if health <= 0:
-		call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
+		call_deferred("_change_scene_to_file", "res://scenes/main_menu.tscn")
+
+func _change_scene_to_file(path):
+	get_tree().change_scene_to_file(path)

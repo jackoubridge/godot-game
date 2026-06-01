@@ -7,8 +7,8 @@
 [node name="Triangle" type="Node2D" unique_id=371975019 node_paths=PackedStringArray("area_2d")]
 script = ExtResource("1_u1wel")
 entity_id = "triangle"
-health_max = 5.0
-xp_value = 5.0
+health_max = 3.0
+xp_value = 3.0
 attack_damage = 1.0
 area_2d = NodePath("Area2D")
 metadata/_custom_type_script = "uid://7d4kllo3pevi"

@@ -32,7 +32,7 @@ func add_xp(amount) -> void:
 			xp -= level_up_xp
 			level_up_xp = 5 * (2 ** level)
 			shoot_cooldown = max(0.5 ** level, 0.5 ** 5)
-		xp_update.emit(xp, level_up_xp)
+		xp_update.emit(xp, level_up_xp, amount)
 
 func take_damage(damage: float, owner_node) -> void:
 	health -= damage

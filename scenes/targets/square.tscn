@@ -9,9 +9,9 @@
 [node name="Square" type="Node2D" unique_id=353023343 node_paths=PackedStringArray("area_2d")]
 script = ExtResource("1_i3yty")
 entity_id = "square"
-health_max = 3.0
-xp_value = 3.0
-attack_damage = 1.0
+health_max = 5.0
+xp_value = 5.0
+attack_damage = 1.2
 area_2d = NodePath("Area2D")
 metadata/_custom_type_script = "uid://7d4kllo3pevi"
 

@@ -69,14 +69,17 @@ one_shot = true
 script = ExtResource("8_y4r1p")
 entity_scene = ExtResource("7_fjrip")
 entity_id = "square"
+entity_threshold = 0
 radius_min = 75.0
 radius_max = 400.0
+level_threshold = 2
 metadata/_custom_type_script = "uid://dsovohspmbsbt"
 
 [node name="TriangleSpawner" type="Node2D" parent="CharacterBody2D" unique_id=1329641497]
 script = ExtResource("8_y4r1p")
 entity_scene = ExtResource("8_smehm")
 entity_id = "triangle"
+entity_threshold = 0
 radius_min = 75.0
 radius_max = 400.0
 metadata/_custom_type_script = "uid://dsovohspmbsbt"

@@ -9,6 +9,7 @@ class_name spawner
 @export var radius_min: float
 @export var radius_max: float
 @export var bias_edges: bool = true
+@export var level_threshold: int = 1
 
 var entities: Array[Node2D] = []
 var entity_speed: float
@@ -49,5 +50,6 @@ func _on_entity_destroyed(entity) -> void:
 		entities.erase(entity)
 
 func update_thresholds(level: int) -> void:
-	entity_threshold = min(2 ** level, 2 ** 5)
-	entity_speed = 2 ** level
+	if level >= level_threshold:
+		entity_threshold = min(2 ** level, 2 ** 5)
+		entity_speed = 2 ** level

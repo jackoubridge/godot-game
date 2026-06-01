@@ -66,6 +66,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="SquareSpawner" type="Node2D" parent="CharacterBody2D" unique_id=692800304]
+process_mode = 3
 script = ExtResource("8_y4r1p")
 entity_scene = ExtResource("7_fjrip")
 entity_id = "square"
@@ -76,6 +77,7 @@ level_threshold = 2
 metadata/_custom_type_script = "uid://dsovohspmbsbt"
 
 [node name="TriangleSpawner" type="Node2D" parent="CharacterBody2D" unique_id=1329641497]
+process_mode = 3
 script = ExtResource("8_y4r1p")
 entity_scene = ExtResource("8_smehm")
 entity_id = "triangle"
@@ -90,6 +92,7 @@ scale = Vector2(100, 100)
 shape = SubResource("CircleShape2D_d2wvv")
 
 [node name="Health Bar" parent="." unique_id=810715880 node_paths=PackedStringArray("move_with") instance=ExtResource("11_d2wvv")]
+process_mode = 3
 position = Vector2(0, 19)
 move_with = NodePath("../CharacterBody2D")
 

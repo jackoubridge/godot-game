@@ -15,6 +15,7 @@ var level_up_xp: int = 10
 var xp: int = 0
 var max_level: int = 5
 var can_add_xp: bool = true
+var total_xp = 0
 
 var health: float = health_max
 var shoot_cooldown: float = 0.5
@@ -23,13 +24,14 @@ var last_damage_source = null
 func add_xp(amount) -> void:
 	if can_add_xp:
 		xp += amount
+		total_xp += amount
 		if (xp >= level_up_xp):
 			level += 1
 			level_update.emit(level)
 			xp -= level_up_xp
 			level_up_xp = 5 * (2 ** level)
 			shoot_cooldown = 0.5 ** level
-		xp_update.emit(xp, level_up_xp, amount)
+		xp_update.emit(xp, level_up_xp)
 
 func take_damage(damage: float, owner_node) -> void:
 	health -= damage
@@ -37,7 +39,5 @@ func take_damage(damage: float, owner_node) -> void:
 	last_damage_source = owner_node
 
 	if health <= 0:
-		call_deferred("_change_scene_to_file", "res://scenes/main_menu.tscn")
-
-func _change_scene_to_file(path):
-	get_tree().change_scene_to_file(path)
+		$"..".gameOver = true
+		$"../GameOver".gameOver(total_xp)

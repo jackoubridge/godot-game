@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://ca2e43qq4nv3h"]
+
+[ext_resource type="Script" uid="uid://crkfemniptid3" path="res://scripts/game_over.gd" id="1_wqhvx"]
+[ext_resource type="Theme" uid="uid://dmrkd1ktljp3u" path="res://assets/ui_theme.tres" id="1_xeevv"]
+[ext_resource type="Shader" uid="uid://d0woaxovmd07m" path="res://assets/blur.gdshader" id="3_tbwuq"]
+[ext_resource type="FontFile" uid="uid://bci0hpiqadby1" path="res://assets/CascadiaMono-VariableFont_wght.ttf" id="4_racf3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_racf3"]
+shader = ExtResource("3_tbwuq")
+shader_parameter/blur_amount = 1.5
+
+[sub_resource type="FontVariation" id="FontVariation_rtw2f"]
+base_font = ExtResource("4_racf3")
+
+[node name="GameOver" type="CanvasLayer" unique_id=1556340943]
+script = ExtResource("1_wqhvx")
+
+[node name="Control" type="Control" parent="." unique_id=1557737080]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xeevv")
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1507297994]
+material = SubResource("ShaderMaterial_racf3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control" unique_id=1608049269]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = -137.5
+offset_right = 137.5
+offset_bottom = 137.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel" unique_id=181118189]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GameOver!" type="Label" parent="Control/Panel/MarginContainer" unique_id=1193119760]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_rtw2f")
+theme_override_font_sizes/font_size = 20
+text = "Game Over!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/MarginContainer" unique_id=1439847878]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Respawn" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer" unique_id=81600014]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Respawn"
+
+[node name="Main Menu" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer" unique_id=2074509497]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Main Menu"
+
+[node name="Score" type="Label" parent="Control/Panel/MarginContainer" unique_id=423365635]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+
+[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/Respawn" to="." method="_on_respawn_pressed"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

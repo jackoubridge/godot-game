@@ -5,8 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://bkw845o2063ns" path="res://scenes/background.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://bn6p7yykajdnc" path="res://scenes/interface.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ca7uxhirlqhgi" path="res://scenes/pause_menu.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://ca2e43qq4nv3h" path="res://scenes/game_over.tscn" id="6_tefeu"]
+
+[sub_resource type="GDScript" id="GDScript_tefeu"]
+script/source = "extends Node2D
+
+var gameOver: bool = false
+"
 
 [node name="Main" type="Node2D" unique_id=1195399613]
+script = SubResource("GDScript_tefeu")
 
 [node name="Background" parent="." unique_id=1117696067 instance=ExtResource("2_rwgxs")]
 position = Vector2(320, 180)
@@ -23,3 +31,6 @@ visible = false
 [node name="PauseHandler" type="Node2D" parent="." unique_id=171859729]
 process_mode = 3
 script = ExtResource("1_jyhfs")
+
+[node name="GameOver" parent="." unique_id=1556340943 instance=ExtResource("6_tefeu")]
+visible = false

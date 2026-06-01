@@ -79,7 +79,6 @@ metadata/_custom_type_script = "uid://dsovohspmbsbt"
 script = ExtResource("8_y4r1p")
 entity_scene = ExtResource("8_smehm")
 entity_id = "triangle"
-entity_threshold = 0
 radius_min = 75.0
 radius_max = 400.0
 metadata/_custom_type_script = "uid://dsovohspmbsbt"

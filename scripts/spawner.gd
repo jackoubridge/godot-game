@@ -40,7 +40,8 @@ func spawn_entity(entity_path: PackedScene) -> void:
 
 	var radius = lerp(radius_min, radius_max, bias)
 
-	await get_tree().create_timer(randf() * 3).timeout
+	if entities.size() > 0:
+		await get_tree().create_timer(randf() * 3).timeout
 	entity.pos = Vector2(cos(angle) * radius, sin(angle) * radius) + global_position
 	entity.rot = randf_range(0, 2*PI)
 	get_parent().get_parent().add_child(entity)

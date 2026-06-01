@@ -18,6 +18,7 @@ position = Vector2(320, 180)
 
 [node name="PauseMenu" parent="." unique_id=781421701 instance=ExtResource("5_tbgi4")]
 process_mode = 3
+visible = false
 
 [node name="PauseHandler" type="Node2D" parent="." unique_id=171859729]
 process_mode = 3

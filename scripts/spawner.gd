@@ -51,5 +51,5 @@ func _on_entity_destroyed(entity) -> void:
 
 func update_thresholds(level: int) -> void:
 	if level >= level_threshold:
-		entity_threshold = min(2 ** level, 2 ** 5)
+		entity_threshold = 2 ** level
 		entity_speed = 2 ** level

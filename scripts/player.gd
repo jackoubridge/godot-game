@@ -25,13 +25,10 @@ func add_xp(amount) -> void:
 		xp += amount
 		if (xp >= level_up_xp):
 			level += 1
-			if level == 5:
-				can_add_xp = false
-				xp = 0
 			level_update.emit(level)
 			xp -= level_up_xp
 			level_up_xp = 5 * (2 ** level)
-			shoot_cooldown = max(0.5 ** level, 0.5 ** 5)
+			shoot_cooldown = 0.5 ** level
 		xp_update.emit(xp, level_up_xp, amount)
 
 func take_damage(damage: float, owner_node) -> void:

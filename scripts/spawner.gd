@@ -10,6 +10,7 @@ class_name spawner
 @export var radius_max: Vector2
 
 var entities: Array[Node2D] = []
+var entity_speed: float
 
 func _ready() -> void:
 	if !is_static:
@@ -25,6 +26,9 @@ func spawn_entity(entity_path: PackedScene) -> void:
 	var entity = entity_path.instantiate()
 
 	entities.append(entity)
+
+	entity.is_static = is_static
+	entity.speed = entity_speed
 
 	var random_x = randf_range(radius_min.x, radius_max.x)
 	var random_y = randf_range(radius_min.y, radius_max.y)
@@ -44,3 +48,4 @@ func _on_entity_destroyed(entity) -> void:
 
 func update_thresholds(level: int) -> void:
 	entity_threshold = min(2 ** level, 2 ** 5)
+	entity_speed = 2 ** level

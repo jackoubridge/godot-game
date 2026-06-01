@@ -13,6 +13,9 @@ var rot: float
 var health: float
 var last_damage_source = null
 var is_destroying: bool = false
+var speed: float
+var player: CharacterBody2D
+var is_static: bool = false
 
 func _ready() -> void:
 	global_position = pos
@@ -27,6 +30,13 @@ func _ready() -> void:
 	tween.parallel().tween_property(self, "scale", Vector2(1.0, 1.0), 0.1)
 	tween.parallel().tween_property(self, "modulate:a", 1.0, 0.1)
 	await tween.finished
+
+	if !is_static:
+		player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
+
+func _physics_process(delta: float) -> void:
+	if player:
+		position += position.direction_to(player.position) * speed * delta
 
 func take_damage(damage: float, owner_node) -> void:
 	health -= damage

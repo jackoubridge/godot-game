@@ -18,7 +18,9 @@ entity_scene = ExtResource("3_hdp06")
 entity_id = "square"
 entity_threshold = 10
 is_static = true
-radius_max = Vector2(290, 150)
+radius_min = 10.0
+radius_max = 300.0
+bias_edges = false
 metadata/_custom_type_script = "uid://dsovohspmbsbt"
 
 [node name="spawner2" type="Node2D" parent="Background" unique_id=1711327376]
@@ -28,7 +30,9 @@ entity_scene = ExtResource("4_hdp06")
 entity_id = "triangle"
 entity_threshold = 10
 is_static = true
-radius_max = Vector2(290, 150)
+radius_min = 10.0
+radius_max = 300.0
+bias_edges = false
 metadata/_custom_type_script = "uid://dsovohspmbsbt"
 
 [node name="RandomBulletSpawner" type="Node2D" parent="Background" unique_id=443873143]

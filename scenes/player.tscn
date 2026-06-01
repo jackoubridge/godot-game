@@ -69,16 +69,16 @@ one_shot = true
 script = ExtResource("8_y4r1p")
 entity_scene = ExtResource("7_fjrip")
 entity_id = "square"
-radius_min = Vector2(75, 75)
-radius_max = Vector2(300, 300)
+radius_min = 75.0
+radius_max = 400.0
 metadata/_custom_type_script = "uid://dsovohspmbsbt"
 
 [node name="TriangleSpawner" type="Node2D" parent="CharacterBody2D" unique_id=1329641497]
 script = ExtResource("8_y4r1p")
 entity_scene = ExtResource("8_smehm")
 entity_id = "triangle"
-radius_min = Vector2(75, 75)
-radius_max = Vector2(300, 300)
+radius_min = 75.0
+radius_max = 400.0
 metadata/_custom_type_script = "uid://dsovohspmbsbt"
 
 [node name="player_entity_radius" type="Area2D" parent="CharacterBody2D" unique_id=317838385 groups=["player_entity_radius"]]

@@ -6,8 +6,9 @@ class_name spawner
 @export var entity_id: String
 @export var entity_threshold: int = 2
 @export var is_static: bool
-@export var radius_min: Vector2
-@export var radius_max: Vector2
+@export var radius_min: float
+@export var radius_max: float
+@export var bias_edges: bool = true
 
 var entities: Array[Node2D] = []
 var entity_speed: float
@@ -30,15 +31,16 @@ func spawn_entity(entity_path: PackedScene) -> void:
 	entity.is_static = is_static
 	entity.speed = entity_speed
 
-	var random_x = randf_range(radius_min.x, radius_max.x)
-	var random_y = randf_range(radius_min.y, radius_max.y)
-	if randf() < 0.5:
-		random_x *= -1
-	if randf() < 0.5:
-		random_y *= -1
+	var angle = randf_range(0.0, TAU)
 
-	await get_tree().create_timer(randf() * 2).timeout
-	entity.pos = Vector2(random_x, random_y) + global_position
+	var bias = randf()
+	if bias_edges == true:
+		bias = randf()**0.25
+
+	var radius = lerp(radius_min, radius_max, bias)
+
+	await get_tree().create_timer(randf() * 3).timeout
+	entity.pos = Vector2(cos(angle) * radius, sin(angle) * radius) + global_position
 	entity.rot = randf_range(0, 2*PI)
 	get_parent().get_parent().add_child(entity)
 

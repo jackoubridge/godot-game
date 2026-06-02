@@ -21,6 +21,9 @@ var health: float = health_max
 var shoot_cooldown: float = 0.5
 var last_damage_source = null
 
+func _ready() -> void:
+	global_variables.game_over = false
+
 func add_xp(amount) -> void:
 	if can_add_xp:
 		xp += amount
@@ -39,5 +42,4 @@ func take_damage(damage: float, owner_node) -> void:
 	last_damage_source = owner_node
 
 	if health <= 0:
-		$"..".gameOver = true
 		$"../GameOver".gameOver(total_xp)

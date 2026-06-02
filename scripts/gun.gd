@@ -6,6 +6,7 @@ var rest_position: Vector2
 var recoil_tween: Tween
 
 var can_shoot: bool = true
+var game_over: bool = false
 
 @export var player: Node2D
 @export var bullet_path: PackedScene
@@ -18,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 		shoot()
 
 func shoot() -> void:
-	if can_shoot:
+	if can_shoot and not global_variables.game_over:
 		# Handle shoot cooldown
 		can_shoot = false
 		$Timer.start(player.shoot_cooldown)

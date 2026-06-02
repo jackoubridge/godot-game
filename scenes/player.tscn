@@ -66,7 +66,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="SquareSpawner" type="Node2D" parent="CharacterBody2D" unique_id=692800304]
-process_mode = 3
+process_mode = 1
 script = ExtResource("8_y4r1p")
 entity_scene = ExtResource("7_fjrip")
 entity_id = "square"
@@ -77,7 +77,7 @@ level_threshold = 2
 metadata/_custom_type_script = "uid://dsovohspmbsbt"
 
 [node name="TriangleSpawner" type="Node2D" parent="CharacterBody2D" unique_id=1329641497]
-process_mode = 3
+process_mode = 1
 script = ExtResource("8_y4r1p")
 entity_scene = ExtResource("8_smehm")
 entity_id = "triangle"
@@ -86,6 +86,7 @@ radius_max = 400.0
 metadata/_custom_type_script = "uid://dsovohspmbsbt"
 
 [node name="player_entity_radius" type="Area2D" parent="CharacterBody2D" unique_id=317838385 groups=["player_entity_radius"]]
+process_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/player_entity_radius" unique_id=862934280]
 scale = Vector2(100, 100)

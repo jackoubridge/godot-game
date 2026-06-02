@@ -7,7 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_racf3"]
 shader = ExtResource("3_tbwuq")
-shader_parameter/blur_amount = 1.5
+shader_parameter/blur_amount = 0.0
 
 [sub_resource type="FontVariation" id="FontVariation_rtw2f"]
 base_font = ExtResource("4_racf3")
@@ -16,7 +16,6 @@ base_font = ExtResource("4_racf3")
 script = ExtResource("1_wqhvx")
 
 [node name="Control" type="Control" parent="." unique_id=1557737080]
-process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

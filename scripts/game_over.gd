@@ -7,8 +7,9 @@ func _ready() -> void:
 	hide()
 
 func gameOver(score: int) -> void:
-	if not global_variables.game_over:
-		global_variables.game_over = true
+	if not game_over:
+		game_over = true
+		global_signals.game_over.emit()
 		$Control/Panel/MarginContainer/Score.text = "Score: " + str(score)
 		show()
 		blur_background()

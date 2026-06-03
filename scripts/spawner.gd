@@ -13,14 +13,16 @@ class_name spawner
 
 var entities: Array[Node2D] = []
 var entity_speed: float
+var spawn_enabled: bool = true
 
 func _ready() -> void:
 	if !is_static:
 		$"../..".level_update.connect(update_thresholds)
 	global_signals.entity_destroyed.connect(_on_entity_destroyed)
+	global_signals.game_over.connect(_on_game_over)
 
 func _physics_process(_delta: float) -> void:
-	if entities.size() < entity_threshold:
+	if entities.size() < entity_threshold and spawn_enabled:
 		spawn_entity(entity_scene)
 
 func spawn_entity(entity_path: PackedScene) -> void:
@@ -54,3 +56,6 @@ func update_thresholds(level: int) -> void:
 	if level >= level_threshold:
 		entity_threshold = 2 ** level
 		entity_speed = 2 ** level
+
+func _on_game_over() -> void:
+	spawn_enabled = false

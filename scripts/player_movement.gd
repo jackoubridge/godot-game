@@ -7,10 +7,12 @@ extends CharacterBody2D
 
 var game_over: bool = false
 
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
+	global_signals.game_over.connect(_on_game_over)
 
+func _physics_process(delta: float) -> void:
 	var input := Vector2.ZERO
-	if not global_variables.game_over:
+	if not game_over:
 		input = Input.get_vector(
 			"move_left",
 			"move_right",
@@ -40,3 +42,10 @@ func knockback(recoil_strength: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("target"):
 		player.take_damage(area.get_parent().attack_damage, area.get_parent())
+		if game_over:
+			# Clean up remaining targets
+			area.get_parent().destroy()
+		
+func _on_game_over() -> void:
+	game_over = true
+	$Gun.game_over = true

@@ -19,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 		shoot()
 
 func shoot() -> void:
-	if can_shoot and not global_variables.game_over:
+	if can_shoot and not game_over:
 		# Handle shoot cooldown
 		can_shoot = false
 		$Timer.start(player.shoot_cooldown)

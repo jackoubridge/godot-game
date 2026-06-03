@@ -26,7 +26,7 @@ player = NodePath("..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1714768612]
 shape = SubResource("CircleShape2D_3vyb7")
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D" unique_id=128332924]
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" unique_id=128332924 groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D" unique_id=749730385]
 shape = SubResource("CircleShape2D_3vyb7")

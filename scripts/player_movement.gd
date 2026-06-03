@@ -37,7 +37,7 @@ func knockback(recoil_strength: float) -> void:
 	var forward = transform.x
 	var recoil_dir = -forward
 	velocity += recoil_dir * recoil_strength
-	
+
 # Collision detection
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("target"):
@@ -45,7 +45,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if game_over:
 			# Clean up remaining targets
 			area.get_parent().destroy()
-		
+
 func _on_game_over() -> void:
 	game_over = true
 	$Gun.game_over = true

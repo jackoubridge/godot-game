@@ -13,7 +13,6 @@ signal level_update(value: int)
 var level:int = 1
 var level_up_xp: int = 10
 var xp: int = 0
-var max_level: int = 5
 var can_add_xp: bool = true
 var total_xp = 0
 

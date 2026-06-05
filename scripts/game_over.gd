@@ -30,7 +30,7 @@ func slow_time() -> void:
 		.set_ignore_time_scale(true) \
 		.set_trans(Tween.TRANS_QUART) \
 		.set_ease(Tween.EASE_OUT) \
-		.tween_property(Engine, "time_scale", 0.1, 2.0)
+		.tween_property(Engine, "time_scale", 0.2, 2.0)
 
 func blur_background() -> void:
 	var mat := color_rect.material as ShaderMaterial

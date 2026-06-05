@@ -32,7 +32,7 @@ func spawn_entity(entity_path: PackedScene) -> void:
 	entities.append(entity)
 
 	entity.is_static = is_static
-	entity.speed = entity_speed
+	entity.base_speed = entity_speed
 
 	var angle = randf_range(0.0, TAU)
 

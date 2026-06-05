@@ -13,6 +13,7 @@ health_max = 4.0
 xp_value = 4.0
 attack_damage = 1.2
 area_2d = NodePath("Area2D")
+speed_mult = 1.2
 metadata/_custom_type_script = "uid://7d4kllo3pevi"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1700395972 groups=["square", "target"]]

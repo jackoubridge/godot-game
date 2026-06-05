@@ -7,13 +7,14 @@ class_name Target
 @export var xp_value: float
 @export var attack_damage: float
 @export var area_2d: Area2D
+@export var speed_mult: float = 1
 
 var pos: Vector2
 var rot: float
 var health: float
 var last_damage_source = null
 var is_destroying: bool = false
-var speed: float
+var base_speed: float
 var player: CharacterBody2D
 var is_static: bool = false
 var game_over: bool = false
@@ -39,7 +40,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if player:
-		position += position.direction_to(player.position) * speed * delta
+		position += position.direction_to(player.position) * base_speed * speed_mult * delta
 
 func take_damage(damage: float, owner_node) -> void:
 	health -= damage

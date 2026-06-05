@@ -6,6 +6,7 @@ extends Node2D
 @export var bullet_damage: float = 1
 @export var recoil_strength: float = bullet_speed / 3
 @export var health_max: float = 10
+@export var god_mode: bool = false
 
 signal xp_update(value: int)
 signal level_update(value: int)
@@ -33,9 +34,10 @@ func add_xp(amount) -> void:
 		xp_update.emit(xp, level_up_xp)
 
 func take_damage(damage: float, owner_node) -> void:
-	health -= damage
-	$"Health Bar".update(health, health_max)
-	last_damage_source = owner_node
+	if not god_mode:
+		health -= damage
+		$"Health Bar".update(health, health_max)
+		last_damage_source = owner_node
 
 	if health <= 0:
 		$"../GameOver".gameOver(total_xp)

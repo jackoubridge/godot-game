@@ -33,7 +33,7 @@ func level_up() -> void:
 	level_update.emit(level)
 	level_up_xp = 5 * (2 ** level)
 	xp_update.emit(xp, level_up_xp)
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.1).timeout
 	var statToUpgrade: String = await $"../UpgradeScreen".upgrade_screen()
 
 	match statToUpgrade:

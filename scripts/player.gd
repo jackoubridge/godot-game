@@ -14,7 +14,6 @@ signal level_update(value: int)
 var level:int = 1
 var level_up_xp: int = 10
 var xp: int = 0
-var can_add_xp: bool = true
 var total_xp = 0
 
 var health: float = health_max
@@ -22,16 +21,28 @@ var shoot_cooldown: float = 0.5
 var last_damage_source = null
 
 func add_xp(amount) -> void:
-	if can_add_xp:
-		xp += amount
-		total_xp += amount
-		if (xp >= level_up_xp):
-			level += 1
-			level_update.emit(level)
-			xp -= level_up_xp
-			level_up_xp = 5 * (2 ** level)
-			shoot_cooldown = 0.5 ** level
-		xp_update.emit(xp, level_up_xp)
+	xp += amount
+	total_xp += amount
+	if (xp >= level_up_xp):
+		level_up()
+	xp_update.emit(xp, level_up_xp)
+
+func level_up() -> void:
+	level += 1
+	xp -= level_up_xp
+	level_update.emit(level)
+	level_up_xp = 5 * (2 ** level)
+	xp_update.emit(xp, level_up_xp)
+	await get_tree().create_timer(0.3).timeout
+	var statToUpgrade: String = await $"../UpgradeScreen".upgrade_screen()
+
+	match statToUpgrade:
+		"movement_speed": movement_speed *= 1.2
+		"bullet_damage": bullet_damage *= 1.2
+		"shooting_speed": shoot_cooldown *= 0.8
+		"health_max":
+			health_max *= 1.2
+			health *= 1.2
 
 func take_damage(damage: float, owner_node) -> void:
 	if not god_mode:

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bn6p7yykajdnc" path="res://scenes/interface.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ca7uxhirlqhgi" path="res://scenes/pause_menu.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://ca2e43qq4nv3h" path="res://scenes/game_over.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://3p7emlic3xxv" path="res://scenes/upgrade_screen.tscn" id="7_o6xl0"]
 
 [node name="Main" type="Node2D" unique_id=1195399613]
 
@@ -26,4 +27,7 @@ process_mode = 3
 script = ExtResource("1_jyhfs")
 
 [node name="GameOver" parent="." unique_id=1556340943 instance=ExtResource("6_tefeu")]
+visible = false
+
+[node name="UpgradeScreen" parent="." unique_id=46699306 instance=ExtResource("7_o6xl0")]
 visible = false
